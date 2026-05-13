@@ -12,11 +12,12 @@ Route::post('/login', [AuthController::class, 'login']);
 // Webhook public — CinetPay appelle cette route directement
 Route::post('/payment/notify', [PaymentController::class, 'notify']);
 
+ Route::get('/products', [ProductController::class, 'index']); 
 // routes protégées
     Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/profile', [AuthController::class, 'profile']);
-    Route::get('/products', [ProductController::class, 'index']); 
+   
           
      // liste produits
     Route::get('/products/{id}', [ProductController::class, 'show']);    
