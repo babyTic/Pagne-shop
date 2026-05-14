@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://127.0.0.1:8000/api",
+  baseURL: "pagne-shop-production.up.railway.app",
   headers: {
     "Content-Type": "application/json",
     "Accept":       "application/json", // important pour Laravel
