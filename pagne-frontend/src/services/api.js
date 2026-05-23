@@ -1,10 +1,11 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://pagne-shop-production.up.railway.app/api",
+  // ✅ Variable d'env Vite
+  baseURL: import.meta.env.VITE_API_URL || "http://localhost:8080/api",
   headers: {
     "Content-Type": "application/json",
-    "Accept":       "application/json", // important pour Laravel
+    "Accept":       "application/json",
   }
 });
 
