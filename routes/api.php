@@ -6,6 +6,11 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\StripeController;
 use App\Http\Controllers\Api\PaymentController;
 
+// ✅ Gère les requêtes OPTIONS (preflight CORS)
+Route::options('{any}', function() {
+    return response()->json([], 200);
+})->where('any', '.*');
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
