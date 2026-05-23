@@ -96,7 +96,7 @@ jobs:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
           VITE_STRIPE_PUBLIC_KEY: ${{ secrets.VITE_STRIPE_PUBLIC_KEY }}
 
-  # ── Job 3 : Deploy Railway ──
+# ── Job 3 : Deploy Railway ──
   deploy:
     name: 🚀 Deploy Railway
     runs-on: ubuntu-latest
@@ -107,8 +107,10 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
+      - name: 🚀 Install Railway CLI
+        run: npm install -g @railway/cli
+
       - name: 🚀 Deploy to Railway
-        uses: bervProject/railway-deploy@main
-        with:
-          railway_token: ${{ secrets.RAILWAY_TOKEN }}
-          service: ${{ secrets.RAILWAY_SERVICE_ID }}
+        run: railway up --service ${{ secrets.RAILWAY_SERVICE_ID }} --detach
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
